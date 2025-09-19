@@ -9,118 +9,170 @@
 <title>Home page</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
-/* Kiểu chung cho body và container của form */
+/* Thiết lập chung */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Kiểu cho phần header (đầu trang) */
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #77aaff 3px solid;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
 }
 
-.login-container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+header nav ul li {
+    padding: 0 15px 0 15px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #77aaff;
+}
+
+/* Kiểu cho phần main content (nội dung chính) */
+main {
+    padding: 20px 0;
+}
+
+.hero-section {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
     text-align: center;
-    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Tiêu đề của form */
-h2 {
-    color: #1c1e21;
-    margin-bottom: 25px;
-    font-size: 24px;
+.hero-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #007bff;
 }
 
-/* Kiểu cho thông báo lỗi */
-.alert {
-    padding: 12px;
+.hero-section p {
+    font-size: 1.2em;
     margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    text-align: left;
-    border: 1px solid transparent;
+    transition: background-color 0.3s;
 }
 
-.alert-danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+.btn:hover {
+    background: #0056b3;
 }
 
-/* Kiểu cho thông báo lỗi từ requestScope */
-p[style="color: red;"] {
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-/* Form và các trường nhập liệu */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-label {
-    align-self: flex-start;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-    font-size: 14px;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-}
-
-/* Kiểu cho ô checkbox */
-input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-/* Kiểu cho nút Đăng nhập */
-input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
+/* Kiểu cho phần footer (chân trang) */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
 }
 </style>
 
 </head>
 <body>
-this is home page
+
+    <header>
+    
+         <core1:choose>
+
+		<core1:when test="${sessionScope.account == null}">
+		<div class="col-sm-4">
+		<ul class="list-inline right-topbar pull-right">
+		<li><a href="${pageContext.request.contextPath }/login">Đăng nhập</a>
+		| <a href="${pageContext.request.contextPath }/register">Đăng ký</a></li>
+		
+		<li><i class="search fa fa-search search-button"></i></li>
+		</ul>
+		</div>
+		</core1:when>
+		
+		<core1:otherwise>
+		<div class="col-sm-4">
+		<ul class="list-inline right-topbar pull-right">
+		<li><a href="${pageContext.request.contextPath
+		}/member/myaccount">${sessionScope.account.fullName}</a> | <a
+		href="${pageContext.request.contextPath }/logout">Đăng Xuất</a></li>
+		<li><i class="search fa fa-search search-button"></i></li>
+		</ul>
+		</div>
+		</core1:otherwise>
+		
+		</core1:choose>
+        <div class="container">
+   
+
+            <h1>Trang Web Của Tôi</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Dịch Vụ</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <h2>Chào mừng bạn đến với trang web</h2>
+                <p>Đây là một trang web đơn giản được tạo bằng HTML và CSS. Bạn có thể tùy chỉnh nội dung này để phù hợp với mục đích của mình.</p>
+                <a href="#" class="btn">Tìm hiểu thêm</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Trang Web Của Tôi. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
