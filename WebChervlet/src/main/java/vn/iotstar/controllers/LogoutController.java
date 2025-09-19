@@ -26,12 +26,7 @@ public class LogoutController extends HttpServlet {
 
         // Redirect the user to the login page or homepage
         //
-        
-        
-        
-        
-        
-        
+
         
         response.sendRedirect("/login");
         request.getRequestDispatcher("/views/login.jsp").forward(request, response);
