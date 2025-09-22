@@ -43,6 +43,7 @@ public class LogoutController extends HttpServlet {
                 session.invalidate();
             }
             //response.sendRedirect("/views/login.jsp");
+            response.sendRedirect("/login");
             request.getRequestDispatcher("/views/login.jsp").forward(request, response);
             return; 
         }

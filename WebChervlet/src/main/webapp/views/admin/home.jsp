@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="core1" uri="jakarta.tags.core" %>
-
- 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
 <style>
@@ -150,7 +148,9 @@ body {
                     <li><a href="#">Quản lý người dùng</a></li>
                     <li><a href="#">Quản lý sản phẩm</a></li>
                     <li><a href="#">Cài đặt</a></li>
-                    <li><a href="#">Đăng xuất</a></li>
+                    <li><a href="${pageContext.request.contextPath
+		}/member/myaccount">${sessionScope.account.fullName}</a> | <a
+		href="${pageContext.request.contextPath }/logout">Đăng Xuất</a></li>
                 </ul>
             </nav>
         </div>

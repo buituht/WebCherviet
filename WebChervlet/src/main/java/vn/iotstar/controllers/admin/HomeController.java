@@ -22,12 +22,13 @@ public class HomeController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		/*
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("Hello, this is admin home");
 		out.close();
-		
-		req.getRequestDispatcher("views/admin/home.jsp").forward(req, resp);
+		*/
+		req.getRequestDispatcher("/views/admin/home.jsp").forward(req, resp);
 	}
 	
 	@Override
