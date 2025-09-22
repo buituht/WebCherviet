@@ -134,18 +134,18 @@ body {
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Quản Trị - Dashboard</title>
+    <title>Trang Quản lý - Dashboard</title>
     <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
 
     <header class="admin-header">
         <div class="container">
-            <h1>Bảng điều khiển Admin</h1>
+            <h1>Bảng điều khiển Manager</h1>
             <nav class="admin-nav">
                 <ul>
                     <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Quản lý người dùng</a></li>
+                    
                     <li><a href="#">Quản lý sản phẩm</a></li>
 			        <li><a href="#">Cài đặt</a></li>
 			         <core1:choose>           
@@ -175,8 +175,8 @@ body {
 
     <main class="admin-main">
         <div class="container">
-            <section class="admin-content">
-                <h2>Chào mừng, Admin ${sessionScope.account.fullName}!</h2>
+            <section class="admin-content ${sessionScope.account.fullName}">
+                <h2>Chào mừng, Manager!</h2>
                 <p>Đây là bảng điều khiển chính. Tại đây, bạn có thể xem tổng quan về hệ thống và quản lý các chức năng.</p>
                 
                 <div class="dashboard-widgets">

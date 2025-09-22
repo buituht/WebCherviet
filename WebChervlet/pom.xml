@@ -39,7 +39,19 @@
 	<version>3.0.1</version>
 	</dependency>
 
+	<!-- Thêm dependency cho Commons FileUpload -->
+    <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.4</version>
+    </dependency>
 
+    <!-- Thêm dependency cho Commons IO (FileUpload cần nó) -->
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.11.0</version>
+    </dependency>
 
 	<dependency>
 		<groupId>SampleProject</groupId>

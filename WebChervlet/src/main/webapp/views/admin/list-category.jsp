@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="core1" uri="jakarta.tags.core" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -131,6 +131,27 @@ body {
     padding: 15px 0;
     margin-top: 20px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,8 +169,8 @@ body {
                     <li><a href="#">Quản lý người dùng</a></li>
                     <li><a href="#">Quản lý sản phẩm</a></li>
 			        <li><a href="#">Cài đặt</a></li>
-			         <core1:choose>           
-			                    	<core1:when test="${sessionScope.account == null}">
+			         <c:choose>           
+			                    	<c:when test="${sessionScope.account == null}">
 					
 							<li><a href="${pageContext.request.contextPath }/login">Đăng nhập</a>
 							| <a href="${pageContext.request.contextPath }/register">Đăng ký</a></li>
@@ -157,16 +178,16 @@ body {
 							<li><i class="search fa fa-search search-button"></i></li>
 							
 							
-							</core1:when>
-							<core1:otherwise>
+							</c:when>
+							<c:otherwise>
 							
 							
 					                    <li><a href="${pageContext.request.contextPath
 							}/member/myaccount">${sessionScope.account.fullName}</a> | <a
 							href="${pageContext.request.contextPath }/logout">Đăng Xuất</a></li>
-							</core1:otherwise>
+							</c:otherwise>
 					
-					</core1:choose>
+					</c:choose>
 					
                 </ul>
             </nav>
@@ -175,29 +196,36 @@ body {
 
     <main class="admin-main">
         <div class="container">
-            <section class="admin-content">
-                <h2>Chào mừng, Admin ${sessionScope.account.fullName}!</h2>
-                <p>Đây là bảng điều khiển chính. Tại đây, bạn có thể xem tổng quan về hệ thống và quản lý các chức năng.</p>
-                
-                <div class="dashboard-widgets">
-                    <div class="widget">
-                        <h3>Người dùng mới</h3>
-                        <p><strong>150</strong></p>
-                    </div>
-                    <div class="widget">
-                        <h3>Sản phẩm đã bán</h3>
-                        <p><strong>2,100</strong></p>
-                    </div>
-                    <div class="widget">
-                        <h3>Lượt truy cập</h3>
-                        <p><strong>12,500</strong></p>
-                    </div>
-                </div>
-
-                <div class="dashboard-chart">
-                    <h3>Biểu đồ thống kê</h3>
-                    <p>Biểu đồ doanh thu hàng tháng sẽ được hiển thị ở đây.</p>
-                </div>
+            <section class="admin-content cateList">
+                <h2>Danh Sách Danh Mục</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Icon</th>
+                            <th>Tên</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${cateList}" var="cate" varStatus="STT" >
+                            <tr class="odd gradeX">
+                                <td>${STT.index + 1}</td>
+                                <td>
+                                    <c:url value="/image?fname=${cate.icons}" var="imgUrl"/>
+                                    <img height="150" width="200" src="${imgUrl}" alt="${cate.icons}" />
+                                </td>
+                                <td>${cate.cateName}</td>
+                                <td>
+                                    <c:url value='/admin/category/edit?id=${cate.cateId}' var="editUrl"/>
+                                    <c:url value='/admin/category/delete?id=${cate.cateId}' var="deleteUrl"/>
+                                    <a href="${editUrl}" class="center">Sửa</a> | 
+                                    <a href="${deleteUrl}" class="center">Xóa</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </section>
         </div>
     </main>
