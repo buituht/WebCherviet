@@ -147,10 +147,27 @@ body {
                     <li><a href="#">Dashboard</a></li>
                     <li><a href="#">Quản lý người dùng</a></li>
                     <li><a href="#">Quản lý sản phẩm</a></li>
-                    <li><a href="#">Cài đặt</a></li>
-                    <li><a href="${pageContext.request.contextPath
-		}/member/myaccount">${sessionScope.account.fullName}</a> | <a
-		href="${pageContext.request.contextPath }/logout">Đăng Xuất</a></li>
+			        <li><a href="#">Cài đặt</a></li>
+			         <core1:choose>           
+			                    	<core1:when test="${sessionScope.account == null}">
+					
+							<li><a href="${pageContext.request.contextPath }/login">Đăng nhập</a>
+							| <a href="${pageContext.request.contextPath }/register">Đăng ký</a></li>
+							
+							<li><i class="search fa fa-search search-button"></i></li>
+							
+							
+							</core1:when>
+							<core1:otherwise>
+							
+							
+					                    <li><a href="${pageContext.request.contextPath
+							}/member/myaccount">${sessionScope.account.fullName}</a> | <a
+							href="${pageContext.request.contextPath }/logout">Đăng Xuất</a></li>
+							</core1:otherwise>
+					
+					</core1:choose>
+					
                 </ul>
             </nav>
         </div>

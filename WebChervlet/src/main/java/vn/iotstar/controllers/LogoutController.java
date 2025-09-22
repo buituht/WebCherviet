@@ -28,8 +28,9 @@ public class LogoutController extends HttpServlet {
         //
 
         
-        response.sendRedirect("/login");
+       // response.sendRedirect("/login");
         request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+    
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
