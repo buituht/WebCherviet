@@ -16,6 +16,8 @@ import vn.iotstar.services.CategoryService;
 import vn.iotstar.services.ProductService;
 import vn.iotstar.services.impl.CategoryServiceImpl;
 import vn.iotstar.services.impl.ProductServiceImpl;
+import vn.iotstar.utils.Constant;
+
 
 @WebServlet(urlPatterns = {"/admin/product/edit"})
 @MultipartConfig(
@@ -25,27 +27,36 @@ import vn.iotstar.services.impl.ProductServiceImpl;
 )
 public class ProductEditController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static final String UPLOAD_DIRECTORY = "C:\\uploads\\product";
+    private static final String UPLOAD_DIRECTORY = Constant.DIR;
     ProductService productService = new ProductServiceImpl();
     CategoryService cateService = new CategoryServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
         req.setCharacterEncoding("UTF-8");
         String idStr = req.getParameter("id");
+        
         if (idStr != null && !idStr.isEmpty()) {
             int id = Integer.parseInt(idStr);
             ProductModel product = productService.get(id);
+            
             if (product != null) {
+            	
                 req.setAttribute("product", product);
                 req.setAttribute("categories", cateService.findAll());
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/edit-product.jsp");
                 dispatcher.forward(req, resp);
+                
             } else {
+            	
                 resp.sendRedirect(req.getContextPath() + "/admin/product/list");
+                
             }
         } else {
+        	
             resp.sendRedirect(req.getContextPath() + "/admin/product/list");
+            
         }
     }
 

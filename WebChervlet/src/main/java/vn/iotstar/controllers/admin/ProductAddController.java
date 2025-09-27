@@ -16,6 +16,7 @@ import vn.iotstar.services.CategoryService;
 import vn.iotstar.services.ProductService;
 import vn.iotstar.services.impl.CategoryServiceImpl;
 import vn.iotstar.services.impl.ProductServiceImpl;
+import vn.iotstar.utils.Constant;
 
 @WebServlet(urlPatterns = {"/admin/product/add"})
 @MultipartConfig(
@@ -25,7 +26,7 @@ import vn.iotstar.services.impl.ProductServiceImpl;
 )
 public class ProductAddController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static final String UPLOAD_DIRECTORY = "C:\\uploads\\product";
+    private static final String UPLOAD_DIRECTORY = Constant.DIR;
     ProductService productService = new ProductServiceImpl();
     CategoryService cateService = new CategoryServiceImpl();
 
