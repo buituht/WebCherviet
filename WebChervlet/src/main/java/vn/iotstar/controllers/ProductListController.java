@@ -1,4 +1,4 @@
-package vn.iotstar.controllers.admin;
+package vn.iotstar.controllers;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,7 +12,7 @@ import vn.iotstar.models.ProductModel;
 import vn.iotstar.services.ProductService;
 import vn.iotstar.services.impl.ProductServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin/product/list"})
+@WebServlet(urlPatterns = {"/admin/product/listok"})
 public class ProductListController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     ProductService productService = new ProductServiceImpl();
