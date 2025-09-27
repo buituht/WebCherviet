@@ -1,61 +1,38 @@
 package vn.iotstar.models;
 
-import java.io.Serializable;
-
-
-public class CategoryModel implements Serializable{
-	
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		
-	    private int cate_id;
-	    private String cate_name;
-	    private String icons;
-
-	    public CategoryModel() {
-	    }
-
-	    public CategoryModel(String cate_name) {
-	        this.cate_name = cate_name;
-	    }
-
-	    public CategoryModel(int cate_id, String cate_name,String icons) {
-	        this.cate_id = cate_id;
-	        this.cate_name = cate_name;
-	        this.icons = icons;
-	    }
-
-	    // Getters and Setters
-	    public int getCateId() {
-	        return cate_id;
-	    }
-
-	    public void setCateId(int cate_id) {
-	        this.cate_id = cate_id;
-	    }
-
-	    public String getCateName() {
-	        return cate_name;
-	    }
-
-	    public void setCateName(String cate_name) {
-	        this.cate_name = cate_name;
-	    }
-	    public String getIcons() {
-	        return icons;
-	    }
-
-	    public void setIcons(String icons) {
-	        this.icons = icons;
-	    }
-	    
-	  //Overide một số phương thức của java
-		
-		@Override
-		public String toString() {
-			return "CategoryModel [cate_id=" + cate_id + ", cate_name=" + cate_name + ", icons=" + icons + "]";
-		}
-		
-	}
+public class CategoryModel {
+    
+    private int catId;     // Khớp với cột 'catId'
+    private String cateName; // Khớp với cột 'CateName'
+    private String image;    // Khớp với cột 'Image'
+    private int status;    // Khớp với cột 'status'
+    
+    // Getters and Setters
+    public int getCatId() {
+        return catId;
+    }
+    public void setCatId(int catId) {
+        this.catId = catId;
+    }
+    
+    public String getCateName() {
+        return cateName;
+    }
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
+    }
+    
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
+    }
+}
