@@ -13,7 +13,6 @@ public class ProductServiceImpl implements ProductService {
 	    //
 		ProductDao productDao = new ProductDaoImpl(); 
 
-
 	    @Override
 	    public void insert(ProductModel product) {
 	        productDao.insert(product);
@@ -38,6 +37,4 @@ public class ProductServiceImpl implements ProductService {
 	    public List<ProductModel> findAll() {
 	        return productDao.findAll();
 	    }
-
-
 }

@@ -11,30 +11,19 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	CategoryDao categoryDao = new CategoryDaoImpl();
 	
+	@Override
+    public List<CategoryModel> findAll() {
+        return categoryDao.findAll(); 
+    }
+	
+	@Override
+	public CategoryModel get(int catId) {
+		return categoryDao.get(catId);
+	}
 
 	@Override
 	public CategoryModel findByCategoryName(String cate_name) {
 		return categoryDao.findByCategoryName(cate_name);
-	}
-
-	@Override
-	public void insertCategory(CategoryModel category) {
-		categoryDao.insert(category);
-	}
-
-	@Override
-	public List<CategoryModel> getAll() {
-		return categoryDao.getAll();
-	}
-
-	@Override
-	public CategoryModel get(int id) {
-		return categoryDao.get(id);
-	}
-
-	@Override
-	public void edit(CategoryModel category) {
-		categoryDao.edit(category);
 	}
 
 	@Override
@@ -43,12 +32,29 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void delete(int id) {
-		categoryDao.delete(id);
+	public void edit(CategoryModel category) {
+		categoryDao.edit(category);
+	}
+
+	@Override
+	public void delete(int catId) {
+		categoryDao.delete(catId);
 	}
 
 	@Override
 	public CategoryModel findByUserName(String category_name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertCategory(CategoryModel category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<CategoryModel> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

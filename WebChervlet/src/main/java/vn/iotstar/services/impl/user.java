@@ -18,7 +18,6 @@ public class user implements User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub

@@ -29,27 +29,8 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
-
-/*
-	@Override
-	public boolean register(String username) {
-		
-	if (userDao.checkExistUsername(username)) {
-	return false;
-	}
-	this.userDao.insert(username);
-	return true;
-	}
-*/
 	public boolean register(String email, String username,String fullname, String password,String avatar,int roleid, String phone ) {
 
-			// Check for existing username or email before attempting to register
-	      /*
-			long millis=System.currentTimeMillis();
-			java.sql.Date date=new java.sql.Date(millis);
-			*/
-			//moi note userDao.Insert(new user(email, username, fullname, password,avatar,roleid,phone, date));
-			//String email,String username,String fullname, String password,int roleid,String phone, String createdate 
 			userDao.Insert(email,username,fullname,password,avatar,roleid,phone);
 			
 			return true;
