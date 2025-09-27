@@ -10,10 +10,7 @@ import vn.iotstar.services.impl.UserServiceImpl;
 public interface UserService {
 	
 	UserModel login(String username, String password);
-
 	UserModel findByUserName(String username);
-	
-	
 	void insert(UserDao user);
 	//boolean register(String username);
 	boolean checkExistEmail(String email);

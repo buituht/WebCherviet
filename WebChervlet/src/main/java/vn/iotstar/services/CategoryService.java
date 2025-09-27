@@ -1,17 +1,7 @@
 package vn.iotstar.services;
-
 import java.util.List;
-
-import org.apache.catalina.User;
-
-
-import vn.iotstar.daos.UserDao;
-import vn.iotstar.daos.impl.UserDaoImpl;
 import vn.iotstar.models.CategoryModel;
-import vn.iotstar.services.impl.UserServiceImpl;
-
 public interface CategoryService {
-	
 	
 
 	CategoryModel findByUserName(String category_name);
@@ -20,15 +10,16 @@ public interface CategoryService {
 
 	void insertCategory(CategoryModel category);
 
-	  List<CategoryModel> getAll();
+	List<CategoryModel> getAll();
 
-	  CategoryModel get(int int1);
+	CategoryModel get(int id);
 
-	  void edit(CategoryModel category);
+	void edit(CategoryModel category);
 	  
-	  // Thêm phương thức insert để có thể gọi từ Controller
-	    void insert(CategoryModel category);
-	    void delete(int id);
+	// Thêm phương thức insert để có thể gọi từ Controller
+	void insert(CategoryModel category);
+	void delete(int id);
+	List<CategoryModel> findAll(); 
 	    	
 
 	
