@@ -146,7 +146,7 @@ body {
                 <ul>
                     <li><a href="#">Dashboard</a></li>
                     <li><a href="#">Quản lý người dùng</a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath }/admin/product/list">Quản lý sản phẩm</a></li>
 			        <li><a href="#">Cài đặt</a></li>
 			         <core1:choose>           
 			                    	<core1:when test="${sessionScope.account == null}">

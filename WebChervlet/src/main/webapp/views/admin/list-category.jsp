@@ -1,240 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<style>
-
-/* Thiết lập chung */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #e9ebee;
-    color: #333;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px 0;
-}
-
-/* Kiểu cho header */
-.admin-header {
-    background: #34495e;
-    color: #ecf0f1;
-    padding: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.admin-header h1 {
-    margin: 0;
-    font-size: 1.8em;
-    float: left;
-}
-
-.admin-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    float: right;
-}
-
-.admin-nav ul li {
-    display: inline-block;
-    padding: 0 15px;
-}
-
-.admin-nav a {
-    color: #ecf0f1;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-.admin-nav a:hover {
-    color: #3498db;
-}
-
-/* Kiểu cho nội dung chính */
-.admin-main {
-    padding: 20px 0;
-}
-
-.admin-content {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.admin-content h2 {
-    color: #2c3e50;
-    margin-top: 0;
-    border-bottom: 2px solid #bdc3c7;
-    padding-bottom: 10px;
-    font-size: 2em;
-}
-
-/* Kiểu cho các widget trên dashboard */
-.dashboard-widgets {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.widget {
-    background: #f1f2f6;
-    border: 1px solid #dfe4ea;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.widget:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.widget h3 {
-    margin: 0 0 10px;
-    color: #3498db;
-}
-
-.widget p {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #2c3e50;
-    margin: 0;
-}
-
-/* Kiểu cho khu vực biểu đồ */
-.dashboard-chart {
-    background: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    border: 1px solid #dfe4ea;
-}
-
-/* Kiểu cho footer */
-.admin-footer {
-    background: #34495e;
-    color: #ecf0f1;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-tr:hover {
-    background-color: #f5f5f5;
-}
-
-th {
-    background-color: #3498db;
-    color: white;
-}
-</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Quản Trị - Dashboard</title>
-    <link rel="stylesheet" href="admin-style.css">
+    <title>Quản lý Danh mục</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-
-    <header class="admin-header">
-        <div class="container">
-            <h1>Bảng điều khiển Admin</h1>
-            <nav class="admin-nav">
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Quản lý người dùng</a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
-			        <li><a href="#">Cài đặt</a></li>
-			         <c:choose>           
-			                    	<c:when test="${sessionScope.account == null}">
-					
-							<li><a href="${pageContext.request.contextPath }/login">Đăng nhập</a>
-							| <a href="${pageContext.request.contextPath }/register">Đăng ký</a></li>
-							
-							<li><i class="search fa fa-search search-button"></i></li>
-							
-							
-							</c:when>
-							<c:otherwise>
-							
-							
-					                    <li><a href="${pageContext.request.contextPath
-							}/member/myaccount">${sessionScope.account.fullName}</a> | <a
-							href="${pageContext.request.contextPath }/logout">Đăng Xuất</a></li>
-							</c:otherwise>
-					
-					</c:choose>
-					
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="admin-main">
-        <div class="container">
-            <section class="admin-content cateList">
-                <h2>Danh Sách Danh Mục</h2>
-                <table>
-                    <thead>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-primary">Danh Sách Danh mục</h1>
+        
+        <a href="${pageContext.request.contextPath}/admin/category/add" class="btn btn-primary mb-3">
+            <i class="bi bi-plus-circle"></i> Thêm Danh mục mới
+        </a>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Danh mục</th>
+                        <th>Hình ảnh</th>
+                        <th>Trạng thái</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="category" items="${categories}">
                         <tr>
-                            <th>STT</th>
-                            <th>Icon</th>
-                            <th>Tên</th>
-                            <th>Hành động</th>
+                            <td>${category.catId}</td>
+                            <td>${category.cateName}</td>
+                            <td>
+                                <img src="/product_images/${category.image}" alt="${category.cateName}" width="60" class="img-fluid rounded">
+                            </td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${category.status == 1}">
+                                        <span class="badge bg-success">Hoạt động</span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="badge bg-danger">Ngừng hoạt động</span>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td class="text-center">
+                                <a href="${pageContext.request.contextPath}/admin/category/edit?id=${category.catId}" class="btn btn-sm btn-warning me-2">Sửa</a>
+                                <a href="${pageContext.request.contextPath}/admin/category/delete?id=${category.catId}" class="btn btn-sm btn-danger">Xóa</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="${cateList}" var="cate" varStatus="STT" >
-                            <tr class="odd gradeX">
-                                <td>${STT.index + 1}</td>
-                                <td>
-                                    <c:url value="/image?fname=${cate.icons}" var="imgUrl"/>
-                                    <img height="150" width="200" src="${imgUrl}" alt="${cate.icons}" />
-                                </td>
-                                <td>${cate.cateName}</td>
-                                <td>
-                                    <c:url value='/admin/category/edit?id=${cate.cateId}' var="editUrl"/>
-                                    <c:url value='/admin/category/delete?id=${cate.cateId}' var="deleteUrl"/>
-                                    <a href="${editUrl}" class="center">Sửa</a> | 
-                                    <a href="${deleteUrl}" class="center">Xóa</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </section>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
-    </main>
-
-    <footer class="admin-footer">
-        <div class="container">
-            <p>&copy; 2024 Admin Panel. Mọi quyền được bảo lưu.</p>
-        </div>
-    </footer>
-
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
